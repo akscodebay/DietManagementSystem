@@ -31,4 +31,4 @@ spring.mail.username=<your-email-address>
 spring.mail.password=<email-password>
 ```
 
-* If you get message saying access issue. Need to enable that in gmail settings for sending emails.
+* If you get message saying access issue. Need to enable access in gmail settings for sending emails.
