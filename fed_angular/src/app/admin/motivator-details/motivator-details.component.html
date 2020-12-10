@@ -1,0 +1,72 @@
+<div class="card my-2">
+    <div class="text-center">
+            <h3>Modify Motivator</h3>
+    </div>
+    <label  id="filter_label">Search:</label>
+    <input id="filter2" [(ngModel)]="searchText" placeholder="Name, Email, Username, Batch">
+<div class="card-body">
+        <div class="alert alert-danger" *ngIf="response!=null">
+                {{response.response}}
+              </div>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="thead-light">
+            <tr>
+              <th>#</th>
+              <th>UserName</th>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Mobile No.</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>City</th>
+              <th>State</th>
+              <th>Country</th>
+              <th>BMI</th>
+              <th>Reason for Joining</th>
+              <th>Pregnant</th>
+              <th>Medical Conditions</th>
+              <th>Diet Restrictions</th>
+              <th>Diet Custom</th>
+              <th>Referral Code</th>
+              <th>Batch</th>
+              <th>UserType</th>
+              <th>Modify</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+                <tr *ngFor="let challenger of userList | filter2 : searchText; let i = index" [hidden]="userList[i].mobileNumber == i">
+                    <td>{{i+1}}</td>
+                    <td>{{challenger.userId}}</td>
+                    <td>{{challenger.name | uppercase}}</td>
+                    <td>{{challenger.gender}}</td>
+                    <td>{{challenger.mobileNumber}}</td>
+                    <td>{{challenger.email}}</td>
+                    <td>{{challenger.address}}</td>
+                    <td>{{challenger.city}}</td>
+                    <td>{{challenger.state}}</td>
+                    <td>{{challenger.country}}</td>
+                    <td>{{challenger.bmi}}</td>
+                    <td>{{challenger.reason}}</td>
+                    <td>{{challenger.pregnantStatus}}</td>
+                    <td>{{challenger.medicalCondition}}</td>
+                    <td>{{challenger.dietRestrictions}}</td>
+                    <td>{{challenger.dietCustom}}</td>
+                    <td>{{challenger.referredByCode}}</td>
+                    <td>{{challenger.batch}}</td>
+                    <td><div class="text-center">
+                      <button class="btn btn-info" (click)="change(i)">Change</button>
+                  </div></td>
+                    <td><div class="text-center">
+                        <button class="btn btn-info" routerLink="/modifyMotivator/{{challenger.userId}}">Modify</button>
+                    </div></td>
+                    <td><div class="text-center">
+                        <button class="btn btn-info" (click)="delete(i)">Delete</button>
+                    </div></td>
+                  </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>

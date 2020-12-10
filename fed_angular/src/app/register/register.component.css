@@ -1,0 +1,10 @@
+.card{
+    margin-left: 25%;
+}
+
+label{
+    font-weight: bold;
+}
+small{
+    color: gray;
+}

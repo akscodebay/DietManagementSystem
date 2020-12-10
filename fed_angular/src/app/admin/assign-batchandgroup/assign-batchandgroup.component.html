@@ -1,0 +1,79 @@
+<div class="card my-2">
+        <div class="text-center">
+                <h3>Modify-Batch/Group</h3>
+        </div>
+        <label  id="filter_label">Search:</label>
+        <input id="filter" [(ngModel)]="searchText" placeholder="Name, Email, Username">
+    <div class="card-body">
+            <div class="alert alert-danger" *ngIf="response!=null">
+                    {{response.response}}
+                  </div>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead class="thead-light">
+                <tr class="d-flex ">
+                  <th>#</th>
+                  <th class="col-1">UserName</th>
+                  <th class="col-1">Name</th>
+                  <th class="col-1">Gender</th>
+                  <th class="col-1">Mobile No.</th>
+                  <th class="col-1">Email</th>
+                  <th class="col-1">Address</th>
+                  <th class="col-1">City</th>
+                  <th class="col-1">State</th>
+                  <th class="col-1">Country</th>
+                  <th class="col-1">BMI</th>
+                  <th class="col-1">Reason for Joining</th>
+                  <th class="col-1">Pregnant</th>
+                  <th class="col-1">Medical Conditions</th>
+                  <th class="col-1">Diet Restrictions</th>
+                  <th class="col-1">Diet Custom</th>
+                  <th class="col-1">Referral Code</th>
+                  <th class="col-2">Batch</th>
+                  <th class="col-2">Group</th>
+                  <th class="col-1">Assign</th>
+                </tr>
+              </thead>
+              <tbody>
+                    <tr class="d-flex" *ngFor="let challenger of userList | filter : searchText; let i = index">
+                        
+                        <td>{{i+1}}</td>
+                        <td class="col-1">{{challenger.userId}}</td>
+                        <td class="col-1">{{challenger.name | uppercase}}</td>
+                        <td class="col-1">{{challenger.gender}}</td>
+                        <td class="col-1">{{challenger.mobileNumber}}</td>
+                        <td class="col-1">{{challenger.email}}</td>
+                        <td class="col-1">{{challenger.address}}</td>
+                        <td class="col-1">{{challenger.city}}</td>
+                        <td class="col-1">{{challenger.state}}</td>
+                        <td class="col-1">{{challenger.country}}</td>
+                        <td class="col-1">{{challenger.bmi}}</td>
+                        <td class="col-1">{{challenger.reason}}</td>
+                        <td class="col-1">{{challenger.pregnantStatus}}</td>
+                        <td class="col-1">{{challenger.medicalCondition}}</td>
+                        <td class="col-1">{{challenger.dietRestrictions}}</td>
+                        <td class="col-1">{{challenger.dietCustom}}</td>
+                        <td class="col-1">{{challenger.referredByCode}}</td>
+                        <td class="col-2"><div class="">
+                                <select [(ngModel)]="sendChallenger[i].batch" class="form-control" id="batch{{i}}" name="batch{{i}}" required>
+                                <option *ngFor="let batch of batches; let i = index" [selected]="challenger.batch==batch" value="{{batch}}">{{batch}}</option>
+                                </select>
+                                </div>
+                            </td>
+                        <td class="col-2"><div class="">
+                                <select [(ngModel)]="sendChallenger[i].group" class="form-control" id="group" name="group" required>
+                                <option *ngFor="let group of groups; let i = index" [selected]="challenger.group==group" value="{{group}}">{{group}}</option>
+                                </select>
+                                </div>
+                            </td>
+                        <td class="col-1"><div class="text-center">
+                            <button class="btn btn-info" (click)="onSubmit(i)">Assign</button>
+                        </div></td>
+                      </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </div>
+    

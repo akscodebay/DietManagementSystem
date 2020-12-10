@@ -1,0 +1,20 @@
+<div class="card my-2">
+        <div class="text-center">
+                <h3>Inbox</h3>
+        </div>
+        <div class="alert alert-danger" *ngIf="response!=null">
+                {{response.response}}
+              </div>
+</div>
+
+    <div class="card my-2" *ngFor="let message of messages; let i=index" [hidden]="messages[i].userId==-1">
+        <label>
+            <b>From:</b> {{message.sender}}
+        </label>
+        <label>
+            <b>Message:</b> {{message.message}}
+        </label>
+        <div class="text-center">
+            <button type="submit" class="btn btn-info" (click)="read(i)">Read</button>
+        </div>
+    </div>

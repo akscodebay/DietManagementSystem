@@ -1,0 +1,74 @@
+<div class="card my-2">
+    <div class="text-center">
+            <h3>Final Report</h3>
+    </div>
+</div>
+        
+<div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+                <div>
+                    <canvas baseChart
+                            [data]="pieChartData"
+                            [labels]="pieChartLabels"
+                            [chartType]="pieChartType"
+                            [colors]="pieChartColor"></canvas>
+                        </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+                    <div>
+                            <div>
+                                    <canvas baseChart
+                                    [data]="pieChartDataGender"
+                                    [labels]="pieChartLabelsGender"
+                                    [chartType]="pieChartType"
+                                    [colors]="pieChartColor"></canvas>
+                            </div>
+                          </div>
+            </div>
+          </div>
+        </div>
+      </div>
+<div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+                    <div>
+                            <div>
+                              <canvas baseChart
+                                      [datasets]="barChartDataAbove"
+                                      [labels]="barChartLabels"
+                                      [options]="barChartOptions"
+                                      [legend]="barChartLegend"
+                                      [chartType]="barChartType"
+                                      [colors]="barChartColor">
+                              </canvas>
+                            </div>
+                          </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+                    <div>
+                            <div>
+                              <canvas baseChart
+                                      [datasets]="barChartDataBelow"
+                                      [labels]="barChartLabels"
+                                      [options]="barChartOptions"
+                                      [legend]="barChartLegend"
+                                      [chartType]="barChartType"
+                                      [colors]="barChartColor">
+                              </canvas>
+                            </div>
+                          </div>
+            </div>
+          </div>
+        </div>
+      </div>

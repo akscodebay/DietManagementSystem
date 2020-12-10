@@ -1,0 +1,231 @@
+<div class="card my-2">
+    <div class="text-center">
+            <h1>Monthly Log Form</h1>
+    </div>
+<div class="card-body">
+  <form (ngSubmit)="onSubmit()" #monthlyLogForm="ngForm">
+    <div class="form-group">
+        <div class="form-inline">
+            <label for="height">Height</label>
+        <input type="text" [(ngModel)]="monthlylog.height" class="form-control" id="height" name="height" 
+        placeholder="Enter your Height"  minlength="2" maxlength="6" pattern="^[0-9]+[.]*[0-9]+" required #height="ngModel">
+        <small class="text-muted">height to be in centimeters*</small>
+    </div>
+</div>
+        <div *ngIf="height.invalid && (height.dirty || height.touched)"
+        class="alert alert-danger">
+
+                <div *ngIf="height.errors.required">
+                        Height is required.
+                </div>
+                <div *ngIf="height.errors.pattern">
+                        Height Pattern did not match.
+                </div>
+                <div *ngIf="height.errors.minlength">
+                    Height must be atleast 2 charcaters long.
+            </div>
+                <div *ngIf="height.errors.maxlength">
+                        Height exceeds maxlength of 6.
+                </div>
+        </div>
+    <div class="form-group">
+        <div class="form-inline">
+            <label for="Weight">Weight</label>
+        <input type="text" [(ngModel)]="monthlylog.weight" class="form-control" id="weight" name="weight" 
+        placeholder="Enter your Weight"  minlength="2" maxlength="5" pattern="^[0-9]+[.]*[0-9]+" required #weight="ngModel">
+        <small class="text-muted">weight to be in kilograms*</small>
+        </div>
+    </div>
+        <div *ngIf="weight.invalid && (weight.dirty || weight.touched)"
+        class="alert alert-danger">
+
+                <div *ngIf="weight.errors.required">
+                        Weight is required.
+                </div>
+                <div *ngIf="weight.errors.pattern">
+                        Weight Pattern did not match.
+                </div>
+                <div *ngIf="weight.errors.minlength">
+                    Weight must be atleast 2 charcaters long.
+            </div>
+                <div *ngIf="weight.errors.maxlength">
+                        Weight exceeds maxlength of 5.
+                </div>
+        </div>
+        <div class="form-group">
+            <div class="form-inline">
+                <label for="chest">Chest</label>
+            <input type="text" [(ngModel)]="monthlylog.chest" class="form-control" id="chest" name="chest" 
+            placeholder="Chest Measurement"  minlength="2" maxlength="6" pattern="^[0-9]+[.]*[0-9]+" required #chest="ngModel">
+            <small class="text-muted">chest to be in centimeters*</small>
+        </div>
+    </div>
+            <div *ngIf="chest.invalid && (chest.dirty || chest.touched)"
+            class="alert alert-danger">
+    
+                    <div *ngIf="chest.errors.required">
+                            Chest is required.
+                    </div>
+                    <div *ngIf="chest.errors.pattern">
+                            Chest Pattern did not match.
+                    </div>
+                    <div *ngIf="chest.errors.minlength">
+                        Chest must be atleast 2 charcaters long.
+                </div>
+                    <div *ngIf="chest.errors.maxlength">
+                            Chest exceeds maxlength of 6.
+                    </div>
+            </div>
+            <div class="form-group">
+            <div class="form-inline">
+            <label for="waist">Waist</label>
+            <input type="text" [(ngModel)]="monthlylog.waist" class="form-control" id="waist" name="waist" 
+            placeholder="Waist Measurement"  minlength="2" maxlength="6" pattern="^[0-9]+[.]*[0-9]+" required #waist="ngModel">
+            <small class="text-muted">waist to be in centimeters*</small>
+            </div>
+            </div>
+            <div *ngIf="waist.invalid && (waist.dirty || waist.touched)"
+            class="alert alert-danger">
+
+            <div *ngIf="waist.errors.required">
+            Waist is required.
+            </div>
+            <div *ngIf="waist.errors.pattern">
+            Waist Pattern did not match.
+            </div>
+            <div *ngIf="waist.errors.minlength">
+            Waist must be atleast 2 charcaters long.
+            </div>
+            <div *ngIf="waist.errors.maxlength">
+            Waist exceeds maxlength of 6.
+            </div>
+            </div>
+            <div class="form-group">
+            <div class="form-inline">
+            <label for="shoulders">Shoulders</label>
+            <input type="text" [(ngModel)]="monthlylog.shoulders" class="form-control" id="shoulders" name="shoulders" 
+            placeholder="Shoulders Measurement"  minlength="2" maxlength="6" pattern="^[0-9]+[.]*[0-9]+" required #shoulders="ngModel">
+            <small class="text-muted">shoulders to be in centimeters*</small>
+            </div>
+            </div>
+            <div *ngIf="shoulders.invalid && (shoulders.dirty || shoulders.touched)"
+            class="alert alert-danger">
+
+            <div *ngIf="shoulders.errors.required">
+            Shoulders is required.
+            </div>
+            <div *ngIf="shoulders.errors.pattern">
+            Shoulders Pattern did not match.
+            </div>
+            <div *ngIf="shoulders.errors.minlength">
+            Shoulders must be atleast 2 charcaters long.
+            </div>
+            <div *ngIf="shoulders.errors.maxlength">
+            Shoulders exceeds maxlength of 6.
+            </div>
+            </div>
+            <div class="form-group">
+            <div class="form-inline">
+            <label for="biceps">Biceps</label>
+            <input type="text" [(ngModel)]="monthlylog.biceps" class="form-control" id="biceps" name="biceps" 
+            placeholder="Biceps Measurement"  minlength="2" maxlength="6" pattern="^[0-9]+[.]*[0-9]+" required #biceps="ngModel">
+            <small class="text-muted">biceps to be in centimeters*</small>
+            </div>
+            </div>
+            <div *ngIf="biceps.invalid && (biceps.dirty || biceps.touched)"
+            class="alert alert-danger">
+
+            <div *ngIf="biceps.errors.required">
+            Biceps is required.
+            </div>
+            <div *ngIf="biceps.errors.pattern">
+            Biceps Pattern did not match.
+            </div>
+            <div *ngIf="biceps.errors.minlength">
+            Biceps must be atleast 2 charcaters long.
+            </div>
+            <div *ngIf="biceps.errors.maxlength">
+            Biceps exceeds maxlength of 6.
+            </div>
+            </div>
+            <div class="form-group">
+            <div class="form-inline">
+            <label for="forearm">Forearm</label>
+            <input type="text" [(ngModel)]="monthlylog.forearm" class="form-control" id="forearm" name="forearm" 
+            placeholder="Forearm Measurement"  minlength="2" maxlength="6" pattern="^[0-9]+[.]*[0-9]+" required #forearm="ngModel">
+            <small class="text-muted">forearm to be in centimeters*</small>
+            </div>
+            </div>
+            <div *ngIf="forearm.invalid && (forearm.dirty || forearm.touched)"
+            class="alert alert-danger">
+
+            <div *ngIf="forearm.errors.required">
+                Forearm is required.
+            </div>
+            <div *ngIf="forearm.errors.pattern">
+            Forearm Pattern did not match.
+            </div>
+            <div *ngIf="forearm.errors.minlength">
+            Forearm must be atleast 2 charcaters long.
+            </div>
+            <div *ngIf="forearm.errors.maxlength">
+            Forearm exceeds maxlength of 6.
+            </div>
+            </div>
+            <div class="form-group">
+            <div class="form-inline">
+            <label for="leg">Leg</label>
+            <input type="text" [(ngModel)]="monthlylog.leg" class="form-control" id="leg" name="leg" 
+            placeholder="Leg Measurement"  minlength="2" maxlength="5" pattern="^[0-9]+[.]*[0-9]+" required #leg="ngModel">
+            <small class="text-muted">leg to be in centimeters*</small>
+            </div>
+            </div>
+            <div *ngIf="leg.invalid && (leg.dirty || leg.touched)"
+            class="alert alert-danger">
+
+            <div *ngIf="leg.errors.required">
+                    Leg is required.
+            </div>
+            <div *ngIf="leg.errors.pattern">
+                Leg Pattern did not match.
+            </div>
+            <div *ngIf="leg.errors.minlength">
+                Leg must be atleast 2 charcaters long.
+            </div>
+            <div *ngIf="leg.errors.maxlength">
+                Leg exceeds maxlength of 6.
+            </div>
+            </div>
+            <div class="form-group">
+                <div class="form-inline">
+                <label for="thighs">Thighs</label>
+                <input type="text" [(ngModel)]="monthlylog.thighs" class="form-control" id="thighs" name="thighs" 
+                placeholder="Thighs Measurement"  minlength="2" maxlength="5" pattern="^[0-9]+[.]*[0-9]+" required #thighs="ngModel">
+                <small class="text-muted">thighs to be in centimeters*</small>
+                </div>
+                </div>
+                <div *ngIf="thighs.invalid && (thighs.dirty || thighs.touched)"
+                class="alert alert-danger">
+    
+                <div *ngIf="thighs.errors.required">
+                        Thighs is required.
+                </div>
+                <div *ngIf="thighs.errors.pattern">
+                    Thighs Pattern did not match.
+                </div>
+                <div *ngIf="thighs.errors.minlength">
+                    Thighs must be atleast 2 charcaters long.
+                </div>
+                <div *ngIf="thighs.errors.maxlength">
+                    Thighs exceeds maxlength of 6.
+                </div>
+                </div>
+    <div class="alert alert-danger" *ngIf="message!=null">
+            {{message.response}}
+    </div>
+    <div class="text-center">
+        <button type="submit" [disabled]="!monthlyLogForm.form.valid" class="btn btn-info">Save</button>
+    </div>
+  </form>
+</div>
+</div>

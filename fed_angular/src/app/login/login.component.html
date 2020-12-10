@@ -1,0 +1,51 @@
+<div class="card my-5 col-5">
+        <div class="text-center">
+                <h1>Login</h1>
+        </div>
+    <div class="card-body">
+      <div class="alert alert-danger" *ngIf="message!=null">
+        {{message}}
+      </div>
+      <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <div class="form-group">
+          <label for="userId">Username</label>
+          <input type="text" [(ngModel)]="admin.userId" class="form-control" id="userId" name="userId" 
+          placeholder="Enter your Username" maxlength="100" pattern="[A-Z0-9a-z]+" required #userId="ngModel">
+        </div>
+        <div *ngIf="userId.invalid && (userId.dirty || userId.touched)"
+        class="alert alert-danger">
+
+            <div *ngIf="userId.errors.required">
+                Username is required.
+            </div>
+            <div *ngIf="userId.errors.pattern">
+                Username Pattern did not match.
+            </div>
+            <div *ngIf="userId.errors.maxlength">
+                Username exceeds maxlength.
+            </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" [(ngModel)]="admin.password" class="form-control" id="password" name="password" 
+          placeholder="Enter your password" minlength="8" required #password="ngModel">
+        </div>
+        <div *ngIf="password.invalid && (password.dirty || password.touched)"
+        class="alert alert-danger">
+
+            <div *ngIf="password.errors.required">
+                Password is required.
+            </div>
+            <div *ngIf="password.errors.minlength">
+                    Password must be atleast 8 charcaters long.
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" [disabled]="!loginForm.form.valid" class="btn btn-info">Log In</button>
+        </div>
+      </form>
+    </div>
+    <div>
+        New Here? <a routerLink="/register">Register</a>
+    </div>
+  </div>

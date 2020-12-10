@@ -1,0 +1,52 @@
+<div class="card my-2">
+    <div class="text-center">
+            <h1>Daily Log Form</h1>
+    </div>
+<div class="card-body">
+  <form (ngSubmit)="onSubmit()" #dailyLogForm="ngForm">
+    <div class="form-group">
+            <label for="breakfast">Breakfast</label>
+            <input type="text" [(ngModel)]="dailylog.breakfast" class="form-control" id="breakfast" name="breakfast" 
+            placeholder="What did you eat in breakfast?" #breakfast="ngModel">
+            <small class="text-muted">use comma(,) to seperate meals*</small>
+            </div>
+    <div class="form-group">
+            <label for="lunch">Lunch</label>
+            <input type="text" [(ngModel)]="dailylog.lunch" class="form-control" id="lunch" name="lunch"
+            placeholder="What did you eat in breakfast?" #lunch="ngModel">
+            <small class="text-muted">use comma(,) to seperate meals*</small>
+            </div>
+    <div class="form-group">
+        <label for="dinner">Dinner</label>
+        <input type="text" [(ngModel)]="dailylog.dinner" class="form-control" id="dinner" name="dinner"
+        placeholder="What did you eat in dinner?" #dinner="ngModel">
+        <small class="text-muted">use comma(,) to seperate meals*</small>
+        </div>
+<div class="form-group">
+    <label for="fruits">Fruits</label>
+    <input type="text" [(ngModel)]="dailylog.fruits" class="form-control" id="fruits" name="fruits"
+    placeholder="name the fruits." #fruits="ngModel">
+    <small class="text-muted">use comma(,) to seperate fruits*</small>
+    </div>
+<div class="form-group">
+    <label for="vegetables">Vegetables</label>
+    <input type="text" [(ngModel)]="dailylog.vegetables" class="form-control" id="vegetables" name="vegetables"
+    placeholder="name the vegetables." #vegetables="ngModel">
+    <small class="text-muted">use comma(,) to seperate vegetables*</small>
+    </div>
+<div class="form-group">
+    <label for="workouts">Workouts</label>
+    <input type="text" [(ngModel)]="dailylog.workouts" class="form-control" id="workouts" name="workouts"
+    placeholder="Which workouts you did?" #workouts="ngModel">
+    <small class="text-muted">format: workoutname(sets*reps)</small><br>
+    <small class="text-muted">use comma(,) to seperate workouts*</small>
+    </div>
+    <div class="alert alert-danger" *ngIf="message!=null">
+            {{message.response}}
+    </div>
+    <div class="text-center">
+        <button type="submit" [disabled]="!dailyLogForm.form.valid" class="btn btn-info">Save</button>
+    </div>
+  </form>
+</div>
+</div>

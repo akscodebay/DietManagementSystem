@@ -1,0 +1,58 @@
+<div class="card my-2">
+    <div class="text-center">
+            <h3>Pending Requests</h3>
+    </div>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="thead-light">
+            <tr>
+              <th>#</th>
+              <th>Username</th>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Mobile No.</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>City</th>
+              <th>State</th>
+              <th>Country</th>
+              <th>BMI</th>
+              <th>Reason for Joining</th>
+              <th>Pregnant</th>
+              <th>Medical Conditions</th>
+              <th>Diet Restrictions</th>
+              <th>Diet Custom</th>
+              <th>Referral Code</th>
+              <th>Approve</th>
+              <th>Decline</th>
+            </tr>
+          </thead>
+          <tbody>
+                <tr *ngFor="let challenger of userList; let i = index" [hidden]="disable[i].mobileNumber == i">
+                    <td>{{i+1}}</td>
+                    <td>{{challenger.userId}}</td>
+                    <td>{{challenger.name | uppercase}}</td>
+                    <td>{{challenger.gender}}</td>
+                    <td>{{challenger.mobileNumber}}</td>
+                    <td>{{challenger.email}}</td>
+                    <td>{{challenger.address}}</td>
+                    <td>{{challenger.city}}</td>
+                    <td>{{challenger.state}}</td>
+                    <td>{{challenger.country}}</td>
+                    <td>{{challenger.bmi}}</td>
+                    <td>{{challenger.reason}}</td>
+                    <td>{{challenger.pregnantStatus}}</td>
+                    <td>{{challenger.medicalCondition}}</td>
+                    <td>{{challenger.dietRestrictions}}</td>
+                    <td>{{challenger.dietCustom}}</td>
+                    <td>{{challenger.referredByCode}}</td>
+                    <td><button  class="btn btn-success" (click)="approve(challenger.email, i)">Approve</button></td>
+                    <td><button class="btn btn-danger" routerLink="/decline/{{challenger.email}}" (click)="decline(i)">Decline</button></td>
+                  </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+</div>

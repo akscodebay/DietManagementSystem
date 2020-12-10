@@ -1,0 +1,293 @@
+<div class="card my-2">
+    <div class="text-center">
+            <h1>Update Form</h1>
+    </div>
+<div class="card-body">
+  <form (ngSubmit)="onSubmit()" #modifyForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" [(ngModel)]="challenger.name" class="form-control" id="name" name="name" 
+      placeholder="Enter your Name" minlength="3" pattern="^[a-zA-Z]+(([. ][a-zA-Z ])?[a-zA-Z]*)*$" required #name="ngModel">
+    </div>
+    <div *ngIf="name.invalid && (name.dirty || name.touched)"
+    class="alert alert-danger">
+
+        <div *ngIf="name.errors.required">
+            Name is required.
+        </div>
+        <div *ngIf="name.errors.pattern">
+            Name Pattern did not match.
+        </div>
+        <div *ngIf="name.errors.minlength">
+            Name must be atleast 3 charcaters long.
+        </div>
+    </div>
+    <div class="form-group">
+            <label for="gender">Gender</label>
+            <div class="form-inline">
+                    <input type="radio" [(ngModel)]="challenger.gender" class="form-control" id="genderMale" name="gender"
+                    value="male" required #gender="ngModel" (change)="setPregnant($event)">Male
+                    &nbsp;&nbsp;
+                    <input type="radio" [(ngModel)]="challenger.gender" class="form-control" id="genderfemale" name="gender"
+                    value="female" required #gender="ngModel">Female
+                    
+                    <div *ngIf="challenger.gender=='female'" class="form-group mx-4">
+                                    <label for="pregnantStatus" class="mx-2">Pregnant?</label>
+                                    <div class="form-inline">
+                                            <input type="radio" [(ngModel)]="challenger.pregnantStatus" class="form-control" id="pregnantStatus" name="pregnantStatus"
+                                            value="yes" required #pregnantStatus="ngModel">Yes
+                                            &nbsp;&nbsp;
+                                            <input type="radio" [(ngModel)]="challenger.pregnantStatus" class="form-control" id="pregnantStatus" name="pregnantStatus"
+                                            value="no" required #pregnantStatus="ngModel">No
+                                    </div>
+                    </div>
+            </div>
+    </div>
+    
+    <div class="form-group">
+                    <label for="mobileNumber">Mobile Number</label>
+                    <input type="text" [(ngModel)]="challenger.mobileNumber" class="form-control" id="mobileNumber" name="mobileNumber" 
+                    placeholder="Enter your Mobile Number" minlength="10" maxlength="10" pattern="[0-9]+" required #mobileNumber="ngModel">
+                  </div>
+                  <div *ngIf="mobileNumber.invalid && (mobileNumber.dirty || mobileNumber.touched)"
+                  class="alert alert-danger">
+          
+                      <div *ngIf="mobileNumber.errors.required">
+                          Mobile Number is required.
+                      </div>
+                      <div *ngIf="mobileNumber.errors.pattern">
+                          Mobile Number Pattern did not match.
+                      </div>
+                      <div *ngIf="mobileNumber.errors.minlength">
+                          Mobile Number must be 10 charcaters long.
+                      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" [(ngModel)]="challenger.email" class="form-control" id="email" name="email" 
+      placeholder="Enter your email address" minlength="3" maxlength="100" pattern="[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]" required #email="ngModel">
+    </div>
+    <div *ngIf="email.invalid && (email.dirty || email.touched)"
+    class="alert alert-danger">
+
+        <div *ngIf="email.errors.required">
+            Email is required.
+        </div>
+        <div *ngIf="email.errors.pattern">
+            Email Pattern did not match.
+        </div>
+        <div *ngIf="email.errors.minlength">
+            Email must be atleast 3 charcaters long.
+        </div>
+        <div *ngIf="email.errors.maxlength">
+            Email exceeds maxlength.
+        </div>
+    </div>
+    <div class="form-group">
+    <label for="address">Address</label>
+    <input type="text" [(ngModel)]="challenger.address" class="form-control" id="address" name="address" 
+    placeholder="Enter your Address"  maxlength="250" pattern="^[a-zA-Z0-9]+(([.,/ ][a-zA-Z0-9 ])?[a-zA-Z0-9]*)*$" required #address="ngModel">
+    </div>
+    <div *ngIf="address.invalid && (address.dirty || address.touched)"
+    class="alert alert-danger">
+
+            <div *ngIf="address.errors.required">
+                    Address is required.
+            </div>
+            <div *ngIf="address.errors.pattern">
+                    Address Pattern did not match.
+            </div>
+            <div *ngIf="address.errors.maxlength">
+                    Address exceeds maxlength.
+            </div>
+    </div>
+    <div class="form-group">
+            <label for="country">Country</label>
+            <select [(ngModel)]="challenger.country" class="form-control" id="country" name="country" (change)="setState($event)" required #country="ngModel">
+                    <option *ngFor="let country of countries" value="{{country}}">{{country}}</option>
+            </select>
+    </div>
+    <div *ngIf="country.invalid && (country.dirty || country.touched)"
+    class="alert alert-danger">
+
+            <div *ngIf="country.errors.required">
+                    Country is required.
+            </div>
+
+    </div>
+    <div class="form-group">
+        <label for="state">State</label>
+        <select [(ngModel)]="challenger.state" class="form-control" id="state" name="state" required #state="ngModel">
+                <option *ngFor="let state of states" value="{{state}}">{{state}}</option>
+        </select>
+    </div>
+    <div *ngIf="state.invalid && (state.dirty || state.touched)"
+    class="alert alert-danger">
+
+            <div *ngIf="state.errors.required">
+                    State is required.
+            </div>
+
+    </div>
+    
+    <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" [(ngModel)]="challenger.city" class="form-control" id="city" name="city" 
+        placeholder="Enter your City"  minlength="2" maxlength="30" pattern="^[a-zA-Z]+(([. ][a-zA-Z ])?[a-zA-Z]*)*$" required #city="ngModel">
+        </div>
+        <div *ngIf="city.invalid && (city.dirty || city.touched)"
+        class="alert alert-danger">
+
+                <div *ngIf="city.errors.required">
+                        City is required.
+                </div>
+                <div *ngIf="city.errors.pattern">
+                        City Pattern did not match.
+                </div>
+                <div *ngIf="city.errors.minlength">
+                    City must be atleast 2 charcaters long.
+            </div>
+                <div *ngIf="city.errors.maxlength">
+                        City exceeds maxlength.
+                </div>
+        </div>
+        <div class="form-group">
+            <label for="pincode">Pincode</label>
+            <input type="text" [(ngModel)]="challenger.pincode" class="form-control" id="pincode" name="pincode" 
+            placeholder="Enter your Pincode"  minlength="2" maxlength="6" pattern="[0-9]+" required #pincode="ngModel">
+            </div>
+            <div *ngIf="pincode.invalid && (pincode.dirty || pincode.touched)"
+            class="alert alert-danger">
+    
+                    <div *ngIf="pincode.errors.required">
+                            Pincode is required.
+                    </div>
+                    <div *ngIf="pincode.errors.pattern">
+                            Pincode Pattern did not match.
+                    </div>
+                    <div *ngIf="pincode.errors.minlength">
+                        Pincode must be atleast 2 charcaters long.
+                </div>
+                    <div *ngIf="pincode.errors.maxlength">
+                            Pincode exceeds maxlength of 6.
+                    </div>
+            </div>
+            <div class="form-group">
+                <div class="form-inline">
+                    <label for="height">Height</label>
+                <input type="text" [(ngModel)]="challenger.height" class="form-control" id="height" name="height" 
+                placeholder="Enter your Height"  minlength="2" maxlength="5" pattern="^[0-9]+[.]*[0-9]+" required #height="ngModel">
+                <small class="text-muted">height to be in centimeters*</small>
+            </div>
+                <div *ngIf="height.invalid && (height.dirty || height.touched)"
+                class="alert alert-danger">
+        
+                        <div *ngIf="height.errors.required">
+                                Height is required.
+                        </div>
+                        <div *ngIf="height.errors.pattern">
+                                Height Pattern did not match.
+                        </div>
+                        <div *ngIf="height.errors.minlength">
+                            Height must be atleast 2 charcaters long.
+                    </div>
+                        <div *ngIf="height.errors.maxlength">
+                                Height exceeds maxlength of 3.
+                        </div>
+                </div>
+                <br>
+            <div class="form-group">
+                <div class="form-inline">
+                    <label for="Weight">Weight</label>
+                <input type="text" [(ngModel)]="challenger.weight" class="form-control" id="weight" name="weight" 
+                placeholder="Enter your Weight"  minlength="2" maxlength="5" pattern="^[0-9]+[.]*[0-9]+" required #weight="ngModel">
+                <small class="text-muted">weight to be in kilograms*</small>
+                </div>
+            </div>
+                <div *ngIf="weight.invalid && (weight.dirty || weight.touched)"
+                class="alert alert-danger">
+        
+                        <div *ngIf="weight.errors.required">
+                                Weight is required.
+                        </div>
+                        <div *ngIf="weight.errors.pattern">
+                                Weight Pattern did not match.
+                        </div>
+                        <div *ngIf="weight.errors.minlength">
+                            Weight must be atleast 2 charcaters long.
+                    </div>
+                        <div *ngIf="weight.errors.maxlength">
+                                Weight exceeds maxlength of 3.
+                        </div>
+                </div>    
+            </div>
+            <div class="form-group">
+                    <label for="reason">Reason for Joining</label>
+                    <input type="text" [(ngModel)]="challenger.reason" class="form-control" id="reason" name="reason" 
+                    placeholder="Enter Reason"  minlength="15" required #reason="ngModel">
+                    </div>
+                    <div *ngIf="reason.invalid && (reason.dirty || reason.touched)"
+                    class="alert alert-danger">
+            
+                            <div *ngIf="reason.errors.required">
+                                    Reason is required.
+                            </div>
+                            
+                            <div *ngIf="reason.errors.minlength">
+                                Reason must be atleast 15 charcaters long.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                            <label for="medicalCondition">Any Medical Condition</label>
+                            <input type="text" [(ngModel)]="challenger.medicalCondition" class="form-control" id="medicalCondition" name="medicalCondition" 
+                            placeholder="Enter Medical Condition if Any"  #medicalCondition="ngModel">
+                            <small class="text-muted">use comma(,) to seperate medical conditions*</small>
+                            </div>
+                            <div *ngIf="medicalCondition.invalid && (medicalCondition.dirty || medicalCondition.touched)"
+                            class="alert alert-danger">
+                    </div>
+                    <div class="form-group">
+                            <label for="dietRestrictions">Diet Restrictions</label>
+                            <input type="text" [(ngModel)]="challenger.dietRestrictions" class="form-control" id="dietRestrictions" name="dietRestrictions"
+                            placeholder="Enter Diet Restrictions if Any"  #dietRestrictions="ngModel">
+                            <small class="text-muted">use comma(,) to seperate diet restrictions*</small>
+                            </div>
+                            <div *ngIf="dietRestrictions.invalid && (dietRestrictions.dirty || dietRestrictions.touched)"
+                            class="alert alert-danger">
+                    </div>
+                    <div class="form-group">
+                            <label for="dietCustom">Diet Custom</label>
+                            <select [(ngModel)]="challenger.dietCustom" class="form-control" id="dietCustom" name="dietCustom" required #dietCustom="ngModel">
+                                    <option *ngFor="let dietCustom of dietCustoms" value="{{dietCustom}}">{{dietCustom}}</option>
+                            </select>
+                    </div>
+                    <div *ngIf="dietCustom.invalid && (dietCustom.dirty || dietCustom.touched)"
+                    class="alert alert-danger">
+
+                            <div *ngIf="dietCustom.errors.required">
+                                    dietCustom is required.
+                            </div>
+
+                    </div>
+                    <div class="form-group">
+                            <label for="referredByCode">Referral Code </label>
+                            <input type="text" [(ngModel)]="challenger.referredByCode" class="form-control" id="referredByCode" name="referredByCode" 
+                            placeholder="Enter Referral Code"  required #referredByCode="ngModel">
+                            </div>
+                            <div *ngIf="referredByCode.invalid && (referredByCode.dirty || referredByCode.touched)"
+                            class="alert alert-danger">
+                    
+                                    <div *ngIf="referredByCode.errors.required">
+                                            Referral Code is required.
+                                    </div>
+                    </div>
+    <div class="alert alert-danger" *ngIf="message!=null">
+            {{response.response}}
+    </div>
+    <div class="text-center">
+        <button type="submit" [disabled]="!modifyForm.form.valid" class="btn btn-info">Modify</button>
+    </div>
+  </form>
+</div>
+</div>
